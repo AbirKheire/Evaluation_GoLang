@@ -1,0 +1,212 @@
+WIKIPEDIA ANALYSE
+----------------
+Article : Go_(langage)
+URL     : https://fr.wikipedia.org/wiki/Go_(langage)
+Nb paragraphes : 48
+Nb mots (hors numériques) : 2014
+Longueur moyenne des mots : 5.33
+
+Mot-clé : go
+Paragraphes contenant le mot-clé : 34
+
+--- TEXTE COMPLET (paragraphes) ---
+
+Go est un langage de programmation compilé et concurrent inspiré de C et Pascal. Il a été développé par Google[6] à partir d’un concept initial de Robert Griesemer (en), Rob Pike et Ken Thompson.
+
+Go veut faciliter et accélérer la programmation à grande échelle : en raison de sa simplicité, il est donc concevable de l’utiliser aussi bien pour écrire des applications, des scripts ou de grands systèmes. Cette simplicité est nécessaire aussi pour assurer la maintenance et l’évolution des programmes sur plusieurs générations de développeurs.
+
+Cette dernière s'exprime à la fois dans le langage lui-même, avec une syntaxe simple, qui minimise le nombre d'abstractions et de fonctionnalités ; mais également dans la pile des technologies utilisées. Go dispose d'une bibliothèque standard particulièrement complète — qui s'enrichit à chaque mise à jour — et permet de réaliser de nombreuses tâches, sans nécessiter l'ajout de bibliothèques externes.
+
+S’il vise aussi la rapidité d’exécution, indispensable à la programmation système, il considère le multithreading comme le moyen le plus robuste d’assurer sur les processeurs actuels cette rapidité[7] tout en rendant la maintenance facile par séparation de tâches simples exécutées indépendamment afin d’éviter de créer des « usines à gaz ». Cette conception permet également le fonctionnement sans réécriture sur des architectures multi-cœurs en exploitant immédiatement l’augmentation de puissance correspondante.
+
+Voici un exemple d'un programme Hello world typique écrit en Go :
+
+Le langage Go a été créé pour la programmation système et a depuis été étendu aux applications, ce qui constitue la même cible que le C et surtout le C++. Il s'agit d'un langage impératif et concurrent.[réf. nécessaire] Sa vitesse de compilation (due à la simplicité de sa syntaxe) le fait parfois utiliser comme langage de script.[réf. nécessaire]
+
+Go intègre directement, comme Java, les traitements de code en concurrence. Le mot clé go permet à un appel de fonction de s'exécuter en concurrence avec la goroutine courante[8]. Une goroutine, ainsi nommée par analogie lointaine avec les coroutines, est un fil d'exécution supervisé par l'ordonnanceur inclus dans le runtime[9]. Le programme prendra alors avantage de la topologie de l'ordinateur pour exécuter au mieux les goroutines, pas forcément dans un nouveau thread, mais il est aussi possible qu'un groupe de goroutines soit multiplexé sur un groupe de threads[10].
+
+Pour appeler une fonction f, on écrit f(). Pour l'appeler en tant que goroutine, on écrit simplement go f(), ce qui est très semblable au call f task; de PL/I, langage gérant également le multitâche depuis 1970.
+
+Les goroutines communiquent entre elles par passage de messages, en envoyant ou en recevant des messages sur des canaux[11].
+
+Ces messages synchronisent les goroutines entre elles conformément au modèle CSP, considéré par les auteurs comme plus intuitif que le modèle multi-threadé (avec synchronisation par sémaphores comportant des verrous, notion introduite elle aussi par Dijkstra).
+
+Dans l'état actuel du langage (2018)
+
+Le langage contient des aspects de Pascal et de C, mais on s'expose à beaucoup d'erreurs si on oublie momentanément qu'on n'est ni en Pascal ni en C. Ainsi a:=b alloue une variable a en lui affectant la valeur et le type de b, mais si la variable a déjà été allouée il faudra se contenter d'écrire a=b. À ne pas confondre avec a==b (égalité de valeurs). L'expression derrière un if n'a pas besoin de parenthèses, mais l'expression à exécuter en cas de réussite du test devra être entre accolades. Dans son état actuel, le compilateur ne tolère pas qu'une variable déclarée ou un module importé ne soit pas utilisé, ce qui encourage certes de bonnes pratiques, mais rend fort pénibles les tâtonnements de mise au point des programmes.
+
+Go connaît les types scalaires (entiers int ou int64, flottants float, chaînes string), les tableaux indexés par des entiers à partir de 0, les maps qui sont des collections d'objets indexés par des clés (nommés dictionnaires, hashes ou tableaux associatifs dans d'autres langages) et des slices qui sont une généralisation dynamique des tableaux.
+
+Il accède aisément aux fichiers en lecture comme en écriture, que ce soit en mode ligne, ou caractère, ou bien en absorbant le fichier complet, par les packages os et io.
+
+Go a un système de type statique, fortement typé, structurel et sûr, fondé sur l'inférence de types avec la possibilité d'utiliser un typage explicite.
+
+Pour donner un exemple, écrire s := "Camélia", qui déclare, alloue et initialise s, est possible et n'oblige pas à écrire var s string = "Camélia", qui reste cependant accepté.
+
+La compatibilité des types composés est fondée sur les propriétés plutôt que sur le nom. C'est-à-dire que deux types composés seront équivalents si leurs propriétés sont équivalentes : même nom pour la propriété et équivalence de type. C'est le typage structurel.
+
+Cela a pour conséquence que le langage n'est pas objet au sens classique (soit avec classes, soit avec prototype), cependant les concepteurs du langage ont fait un choix plus original pour un langage statique. Il est possible de définir des interfaces portant des méthodes décrivant le comportement d'un objet (il est aussi facilement possible de mélanger plusieurs interfaces en une seule)[12]. Les fonctions Go peuvent déclarer accepter un argument de cette interface. Un objet déclarant toutes les méthodes de cette interface, avec la même signature, peut être passé en argument de cette méthode. La vérification du type est effectuée statiquement par le compilateur.
+
+Le fait que Go ne soit pas objet au sens classique fait que Go n'a pas d'héritage de type et pas de sous-classage. Ceci permet de contourner les problèmes posés par ces systèmes tels l'héritage multiple dans les langages qui le permettent (en C++ par exemple), ou l'héritage simple (en Java par exemple). Grâce à l'équivalence de types fondée sur les propriétés, Go n'a pas besoin d'héritage de type. Le sous-classage est émulé par l'« embarquement de type ». Ceci permet de mélanger facilement deux bases de code conçues indépendamment, sans qu'elles aient besoin de partager des types communs.
+
+La visibilité des structures, attributs, variables, constantes, méthodes, types de haut niveau et des fonctions hors de leur paquetage de déclaration est définie par la casse du premier caractère de leurs identificateurs.
+
+Go travaille en Unicode aussi bien pour son code source que pour son traitement des chaînes. Sa littérature abandonne toutefois l'expression code points pour l'abréviation de runes. Des procédures permettent de transformer des représentations de caractère en runes (toute rune occupant une taille fixe[13]) et transformer par des procédures standards une suite de caractères Unicode en runes d'un tableau (une rune par élément), ainsi que l'inverse, sans avoir à jongler avec les représentations de longueur variables ni s'occuper de savoir si la machine est little-endian ou big-endian. La portabilité est donc assurée.
+
+Parler de runes évite les ambiguïtés qui seraient présentes avec caractère ou octet[14]. Pour explorer une chaîne, soit on utilise directement des fonctions de chaîne, soit on la parcourt de rune en rune.
+
+Les mises en capitales de caractères nationaux (par exemple "è"⇒ "È") se font simplement par unicode.ToUpper(r rune) rune.
+Les runes permettent de spécifier en tout caractère Unicode, thaï, chinois, grec, y compris du langage APL- et également toute émoticône s'y trouvant.
+
+Le manque de support de la programmation générique dans les versions initiales de Go a généré beaucoup de critiques[15]. Les concepteurs ont exprimé qu'ils n'étaient pas opposés à la programmation générique en précisant que certaines fonctions intégrées du langage étaient génériques, mais qu'elles étaient vues comme des exceptions. Rob Pike appelait cet état de fait "une faiblesse" pouvant être changée à un moment ou un autre[16]. L'équipe de Google avait réalisé au moins une version du compilateur pour expérimenter un dialecte intégrant les génériques dans Go, mais ne l'avait jamais publié[17].
+
+En août 2018, les contributeurs principaux de Go ont publié un premier jet d'une proposition de document de conception[18] incluant la programmation générique et le traitement des erreurs par exception. Ils ont ensuite demandé aux utilisateurs de leur soumettre leurs avis sur ces possibles évolutions[19]. L'évolution sur le traitement des erreurs fût abandonnée[20].
+
+En juin 2020, une nouvelle proposition de document de conception[21] fut publiée avec les ajustements et la syntaxe nécessaire à faire dans Go pour déclarer les fonctions et les types génériques. Cette nouvelle proposition fut accompagnée d'un outil permettant de convertir la nouvelle syntaxe intégrant les génériques en une version compilable par les versions existantes de Go, ceci afin de permettre aux utilisateurs de tester ces nouvelles évolutions[22].
+
+Finalement, les génériques furent intégrés dans la version 1.18 de Go le 15 mars 2022[23].
+
+Dans Go, la gestion de la mémoire est assurée par un ramasse-miettes[12].
+
+Il n'y a pas de surcharge de méthodes ou d'arithmétique des pointeurs. Enfin, il n'y a pas d'assertions ou d'exceptions. Pour remplacer ces deux derniers, Go fournit les mots clés defer, panic et recover[24] qui donnent des mécanismes similaires aux systèmes de gestion des exceptions de langages tels que C++ et Java (mots clés try, catch, finally et throw).
+
+Go peut s'interfacer avec des bibliothèques en C/C++, des développeurs tiers ayant déjà développé des bindings pour SDL et MySQL.
+
+Go définit un format de code standard (au niveau des indentations, et de la présentation des structures de contrôle) et fournit un outil pour l'appliquer (go fmt).
+
+Go propose également un système de documentation à partir du code et un framework de test.
+
+L'unité de compilation de go est le package qui est représenté dans l'implémentation standard par un répertoire et les fichiers directement contenus dans ce répertoire.
+
+L'import d'un package se fait par son chemin d'importation et peut préciser soit une bibliothèque standard, soit également des packages tiers installés dans des dépôts de sources distants (actuellement supporté : dépôt sous svn, git, mercurial et bazaar).
+
+Bien que Go soit au départ destiné à produire des applications système robustes et non des programmes destinés à des utilisateurs, des liens avec OpenGL sont développés à titre expérimental[25].
+
+Comme le C, Go exige d'indiquer quelles bibliothèques on utilisera. À la différence du C, il considère la compilation en erreur si cette bibliothèque n'est pas utilisée. Le compilateur Go ne contient en effet pas de messages d'avertissements par choix des concepteurs : « Il n'est pas indispensable de signaler ce qu'il ne serait pas indispensable de corriger ».
+
+Principales bibliothèques :
+
+Les bibliothèques sont tantôt indépendantes, tantôt dépendantes. Il existe par ailleurs plusieurs façons de faire des choses similaires. Par exemple pour lire un fichier, on pourra utiliser ioutil.ReadAll, file.Read() ou bufio.NewScanner().
+
+On obtient la liste des bibliothèques depuis la ligne de commande par go list all.
+
+Go admet l'appel récursif des fonctions, ce qui peut parfois les rendre plus lisibles, sans perte de vitesse excessive :
+
+Ce programme est formaté à la manière standard du go par l'utilitaire gofmt avec les options -s (simplifier le code si possible) et -w (écrire le code modifié in-situ). Cet utilitaire aligne les niveaux de profondeur du programme, facilitant la maintenance en particulier si plusieurs développeurs doivent maintenir le même code. On remarquera qu'il n'aligne pas verticalement les accolades ouvrantes et fermantes, la plupart des éditeurs actuels (2018) se chargeant de signaler visuellement les correspondances en mode édition.
+
+Go possède deux implémentations : la première utilise gc, le compilateur Go ; la seconde utilise gccgo, « frontend » GCC écrit en C++.
+
+Le compilateur gc était écrit en C en utilisant yacc et GNU Bison pour l’analyse syntaxique jusqu’à la version 1.4[26], mais est écrit en Go lui-même pour les versions suivantes (depuis 1.5) avec un processus de bootstrap.
+
+Un projet secondaire de compilateur basé sur LLVM existe[26].
+
+Les choix syntaxiques de Go ne font pas l'unanimité. Si le langage se réclame simpliste dans son écriture, certains lui reprochent des partis pris trop impactants et dogmatiques à cet égard[27] en qualifiant sa syntaxe de confuse[28],[29] et son compilateur d'une rigidité discutable[30], citant entre autres :
+
+Le langage s'est fait reprocher d'avoir « un moteur de Ferrari dans une carrosserie de Ford T »[33].
+
+En revanche, Go propose de simplifier la syntaxe du C, intentionnellement conservée en C++ pour assurer la compatibilité ascendante, en supprimant par exemple les parenthèses syntaxiquement inutiles derrière le if et le for, en proposant un fall-through par défaut dans un switch, etc. Ces modifications peuvent fournir des programmes plus lisibles[34].
+
+Liste d’applications libres notables écrites en Go[35] :
+
+--- PARAGRAPHES AVEC MOT-CLÉ ---
+
+Go est un langage de programmation compilé et concurrent inspiré de C et Pascal. Il a été développé par Google[6] à partir d’un concept initial de Robert Griesemer (en), Rob Pike et Ken Thompson.
+
+Go veut faciliter et accélérer la programmation à grande échelle : en raison de sa simplicité, il est donc concevable de l’utiliser aussi bien pour écrire des applications, des scripts ou de grands systèmes. Cette simplicité est nécessaire aussi pour assurer la maintenance et l’évolution des programmes sur plusieurs générations de développeurs.
+
+Cette dernière s'exprime à la fois dans le langage lui-même, avec une syntaxe simple, qui minimise le nombre d'abstractions et de fonctionnalités ; mais également dans la pile des technologies utilisées. Go dispose d'une bibliothèque standard particulièrement complète — qui s'enrichit à chaque mise à jour — et permet de réaliser de nombreuses tâches, sans nécessiter l'ajout de bibliothèques externes.
+
+Voici un exemple d'un programme Hello world typique écrit en Go :
+
+Le langage Go a été créé pour la programmation système et a depuis été étendu aux applications, ce qui constitue la même cible que le C et surtout le C++. Il s'agit d'un langage impératif et concurrent.[réf. nécessaire] Sa vitesse de compilation (due à la simplicité de sa syntaxe) le fait parfois utiliser comme langage de script.[réf. nécessaire]
+
+Go intègre directement, comme Java, les traitements de code en concurrence. Le mot clé go permet à un appel de fonction de s'exécuter en concurrence avec la goroutine courante[8]. Une goroutine, ainsi nommée par analogie lointaine avec les coroutines, est un fil d'exécution supervisé par l'ordonnanceur inclus dans le runtime[9]. Le programme prendra alors avantage de la topologie de l'ordinateur pour exécuter au mieux les goroutines, pas forcément dans un nouveau thread, mais il est aussi possible qu'un groupe de goroutines soit multiplexé sur un groupe de threads[10].
+
+Pour appeler une fonction f, on écrit f(). Pour l'appeler en tant que goroutine, on écrit simplement go f(), ce qui est très semblable au call f task; de PL/I, langage gérant également le multitâche depuis 1970.
+
+Les goroutines communiquent entre elles par passage de messages, en envoyant ou en recevant des messages sur des canaux[11].
+
+Ces messages synchronisent les goroutines entre elles conformément au modèle CSP, considéré par les auteurs comme plus intuitif que le modèle multi-threadé (avec synchronisation par sémaphores comportant des verrous, notion introduite elle aussi par Dijkstra).
+
+Go connaît les types scalaires (entiers int ou int64, flottants float, chaînes string), les tableaux indexés par des entiers à partir de 0, les maps qui sont des collections d'objets indexés par des clés (nommés dictionnaires, hashes ou tableaux associatifs dans d'autres langages) et des slices qui sont une généralisation dynamique des tableaux.
+
+Go a un système de type statique, fortement typé, structurel et sûr, fondé sur l'inférence de types avec la possibilité d'utiliser un typage explicite.
+
+Cela a pour conséquence que le langage n'est pas objet au sens classique (soit avec classes, soit avec prototype), cependant les concepteurs du langage ont fait un choix plus original pour un langage statique. Il est possible de définir des interfaces portant des méthodes décrivant le comportement d'un objet (il est aussi facilement possible de mélanger plusieurs interfaces en une seule)[12]. Les fonctions Go peuvent déclarer accepter un argument de cette interface. Un objet déclarant toutes les méthodes de cette interface, avec la même signature, peut être passé en argument de cette méthode. La vérification du type est effectuée statiquement par le compilateur.
+
+Le fait que Go ne soit pas objet au sens classique fait que Go n'a pas d'héritage de type et pas de sous-classage. Ceci permet de contourner les problèmes posés par ces systèmes tels l'héritage multiple dans les langages qui le permettent (en C++ par exemple), ou l'héritage simple (en Java par exemple). Grâce à l'équivalence de types fondée sur les propriétés, Go n'a pas besoin d'héritage de type. Le sous-classage est émulé par l'« embarquement de type ». Ceci permet de mélanger facilement deux bases de code conçues indépendamment, sans qu'elles aient besoin de partager des types communs.
+
+Go travaille en Unicode aussi bien pour son code source que pour son traitement des chaînes. Sa littérature abandonne toutefois l'expression code points pour l'abréviation de runes. Des procédures permettent de transformer des représentations de caractère en runes (toute rune occupant une taille fixe[13]) et transformer par des procédures standards une suite de caractères Unicode en runes d'un tableau (une rune par élément), ainsi que l'inverse, sans avoir à jongler avec les représentations de longueur variables ni s'occuper de savoir si la machine est little-endian ou big-endian. La portabilité est donc assurée.
+
+Le manque de support de la programmation générique dans les versions initiales de Go a généré beaucoup de critiques[15]. Les concepteurs ont exprimé qu'ils n'étaient pas opposés à la programmation générique en précisant que certaines fonctions intégrées du langage étaient génériques, mais qu'elles étaient vues comme des exceptions. Rob Pike appelait cet état de fait "une faiblesse" pouvant être changée à un moment ou un autre[16]. L'équipe de Google avait réalisé au moins une version du compilateur pour expérimenter un dialecte intégrant les génériques dans Go, mais ne l'avait jamais publié[17].
+
+En août 2018, les contributeurs principaux de Go ont publié un premier jet d'une proposition de document de conception[18] incluant la programmation générique et le traitement des erreurs par exception. Ils ont ensuite demandé aux utilisateurs de leur soumettre leurs avis sur ces possibles évolutions[19]. L'évolution sur le traitement des erreurs fût abandonnée[20].
+
+En juin 2020, une nouvelle proposition de document de conception[21] fut publiée avec les ajustements et la syntaxe nécessaire à faire dans Go pour déclarer les fonctions et les types génériques. Cette nouvelle proposition fut accompagnée d'un outil permettant de convertir la nouvelle syntaxe intégrant les génériques en une version compilable par les versions existantes de Go, ceci afin de permettre aux utilisateurs de tester ces nouvelles évolutions[22].
+
+Finalement, les génériques furent intégrés dans la version 1.18 de Go le 15 mars 2022[23].
+
+Dans Go, la gestion de la mémoire est assurée par un ramasse-miettes[12].
+
+Il n'y a pas de surcharge de méthodes ou d'arithmétique des pointeurs. Enfin, il n'y a pas d'assertions ou d'exceptions. Pour remplacer ces deux derniers, Go fournit les mots clés defer, panic et recover[24] qui donnent des mécanismes similaires aux systèmes de gestion des exceptions de langages tels que C++ et Java (mots clés try, catch, finally et throw).
+
+Go peut s'interfacer avec des bibliothèques en C/C++, des développeurs tiers ayant déjà développé des bindings pour SDL et MySQL.
+
+Go définit un format de code standard (au niveau des indentations, et de la présentation des structures de contrôle) et fournit un outil pour l'appliquer (go fmt).
+
+Go propose également un système de documentation à partir du code et un framework de test.
+
+L'unité de compilation de go est le package qui est représenté dans l'implémentation standard par un répertoire et les fichiers directement contenus dans ce répertoire.
+
+Bien que Go soit au départ destiné à produire des applications système robustes et non des programmes destinés à des utilisateurs, des liens avec OpenGL sont développés à titre expérimental[25].
+
+Comme le C, Go exige d'indiquer quelles bibliothèques on utilisera. À la différence du C, il considère la compilation en erreur si cette bibliothèque n'est pas utilisée. Le compilateur Go ne contient en effet pas de messages d'avertissements par choix des concepteurs : « Il n'est pas indispensable de signaler ce qu'il ne serait pas indispensable de corriger ».
+
+On obtient la liste des bibliothèques depuis la ligne de commande par go list all.
+
+Go admet l'appel récursif des fonctions, ce qui peut parfois les rendre plus lisibles, sans perte de vitesse excessive :
+
+Ce programme est formaté à la manière standard du go par l'utilitaire gofmt avec les options -s (simplifier le code si possible) et -w (écrire le code modifié in-situ). Cet utilitaire aligne les niveaux de profondeur du programme, facilitant la maintenance en particulier si plusieurs développeurs doivent maintenir le même code. On remarquera qu'il n'aligne pas verticalement les accolades ouvrantes et fermantes, la plupart des éditeurs actuels (2018) se chargeant de signaler visuellement les correspondances en mode édition.
+
+Go possède deux implémentations : la première utilise gc, le compilateur Go ; la seconde utilise gccgo, « frontend » GCC écrit en C++.
+
+Le compilateur gc était écrit en C en utilisant yacc et GNU Bison pour l’analyse syntaxique jusqu’à la version 1.4[26], mais est écrit en Go lui-même pour les versions suivantes (depuis 1.5) avec un processus de bootstrap.
+
+Les choix syntaxiques de Go ne font pas l'unanimité. Si le langage se réclame simpliste dans son écriture, certains lui reprochent des partis pris trop impactants et dogmatiques à cet égard[27] en qualifiant sa syntaxe de confuse[28],[29] et son compilateur d'une rigidité discutable[30], citant entre autres :
+
+En revanche, Go propose de simplifier la syntaxe du C, intentionnellement conservée en C++ pour assurer la compatibilité ascendante, en supprimant par exemple les parenthèses syntaxiquement inutiles derrière le if et le for, en proposant un fall-through par défaut dans un switch, etc. Ces modifications peuvent fournir des programmes plus lisibles[34].
+
+Liste d’applications libres notables écrites en Go[35] :
+
+
+--- PARAGRAPHES SANS MOT-CLÉ ---
+
+S’il vise aussi la rapidité d’exécution, indispensable à la programmation système, il considère le multithreading comme le moyen le plus robuste d’assurer sur les processeurs actuels cette rapidité[7] tout en rendant la maintenance facile par séparation de tâches simples exécutées indépendamment afin d’éviter de créer des « usines à gaz ». Cette conception permet également le fonctionnement sans réécriture sur des architectures multi-cœurs en exploitant immédiatement l’augmentation de puissance correspondante.
+
+Dans l'état actuel du langage (2018)
+
+Le langage contient des aspects de Pascal et de C, mais on s'expose à beaucoup d'erreurs si on oublie momentanément qu'on n'est ni en Pascal ni en C. Ainsi a:=b alloue une variable a en lui affectant la valeur et le type de b, mais si la variable a déjà été allouée il faudra se contenter d'écrire a=b. À ne pas confondre avec a==b (égalité de valeurs). L'expression derrière un if n'a pas besoin de parenthèses, mais l'expression à exécuter en cas de réussite du test devra être entre accolades. Dans son état actuel, le compilateur ne tolère pas qu'une variable déclarée ou un module importé ne soit pas utilisé, ce qui encourage certes de bonnes pratiques, mais rend fort pénibles les tâtonnements de mise au point des programmes.
+
+Il accède aisément aux fichiers en lecture comme en écriture, que ce soit en mode ligne, ou caractère, ou bien en absorbant le fichier complet, par les packages os et io.
+
+Pour donner un exemple, écrire s := "Camélia", qui déclare, alloue et initialise s, est possible et n'oblige pas à écrire var s string = "Camélia", qui reste cependant accepté.
+
+La compatibilité des types composés est fondée sur les propriétés plutôt que sur le nom. C'est-à-dire que deux types composés seront équivalents si leurs propriétés sont équivalentes : même nom pour la propriété et équivalence de type. C'est le typage structurel.
+
+La visibilité des structures, attributs, variables, constantes, méthodes, types de haut niveau et des fonctions hors de leur paquetage de déclaration est définie par la casse du premier caractère de leurs identificateurs.
+
+Parler de runes évite les ambiguïtés qui seraient présentes avec caractère ou octet[14]. Pour explorer une chaîne, soit on utilise directement des fonctions de chaîne, soit on la parcourt de rune en rune.
+
+Les mises en capitales de caractères nationaux (par exemple "è"⇒ "È") se font simplement par unicode.ToUpper(r rune) rune.
+Les runes permettent de spécifier en tout caractère Unicode, thaï, chinois, grec, y compris du langage APL- et également toute émoticône s'y trouvant.
+
+L'import d'un package se fait par son chemin d'importation et peut préciser soit une bibliothèque standard, soit également des packages tiers installés dans des dépôts de sources distants (actuellement supporté : dépôt sous svn, git, mercurial et bazaar).
+
+Principales bibliothèques :
+
+Les bibliothèques sont tantôt indépendantes, tantôt dépendantes. Il existe par ailleurs plusieurs façons de faire des choses similaires. Par exemple pour lire un fichier, on pourra utiliser ioutil.ReadAll, file.Read() ou bufio.NewScanner().
+
+Un projet secondaire de compilateur basé sur LLVM existe[26].
+
+Le langage s'est fait reprocher d'avoir « un moteur de Ferrari dans une carrosserie de Ford T »[33].
+

@@ -1,0 +1,4 @@
+2026-03-01T21:26:35+01:00 | LOCK | data/input.txt
+2026-03-01T21:27:01+01:00 | UNLOCK | data/input.txt
+2026-03-01T21:27:13+01:00 | READONLY_ON | data/input.txt
+2026-03-01T21:27:56+01:00 | READONLY_OFF | data/input.txt

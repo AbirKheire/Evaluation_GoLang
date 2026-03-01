@@ -1,0 +1,12 @@
+REPORT GLOBAL
+------------
+Nb fichiers .txt analysés : 2
+Taille totale (bytes)     : 738
+Total lignes              : 21
+Total mots (hors num)     : 105
+Moyenne lignes/fichier     : 10.50
+Moyenne mots/fichier       : 52.50
+
+Détail par fichier :
+- data\input.txt (lignes=21, mots=105, taille=738)
+- data\monfichier.txt (lignes=0, mots=0, taille=0)

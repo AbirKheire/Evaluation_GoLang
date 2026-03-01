@@ -1,0 +1,9 @@
+# ceci est un commentaire
+
+default_file=data/input.txt
+
+# autre commentaire lol
+base_dir=data
+
+out_dir=out
+default_ext=.txt
